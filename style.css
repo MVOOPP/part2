@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: white;
+}
+
+.text-container {
+    padding: 20px;
+    max-width: 90%; /* Ограничение ширины контейнера */
+    text-align: left;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3vw; /* Адаптивный размер шрифта */
+    line-height: 1.4;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px; /* Промежуток между элементами */
+    color: white;
+}
+
+p span.video-rect {
+    display: inline-block;
+    overflow: hidden;
+    width: 10vw; /* Адаптивная ширина прямоугольника */
+    height: 3vw; /* Адаптивная высота прямоугольника */
+    background-color: transparent;
+    border-radius: 5px;
+    position: relative;
+}
+
+p span.video-rect video {
+    position: absolute;
+    top: calc(var(--y) * -1);
+    left: calc(var(--x) * -1);
+    width: 300%; /* Ширина видео должна быть больше размера прямоугольника */
+    height: auto;
+    object-fit: cover;
+    pointer-events: none; /* Убирает взаимодействие с видео */
+}
+
+@media (max-width: 768px) {
+    p {
+        font-size: 5vw; /* Увеличение текста для мобильных */
+    }
+
+    p span.video-rect {
+        width: 15vw; /* Увеличение размеров видео для мобильных */
+        height: 5vw;
+    }
+}
